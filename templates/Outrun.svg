@@ -1352,7 +1352,7 @@
 			h-2.63l1.43-8.29h-5.6c-1.15,0-2.2-0.99-2.36-1.87l-5.1-29.08h2.8L458.1,353.61z"/>
 	</g>
 	<g class="st0">
-		<text transform="matrix(1 0 0 1 203.4077 53.726)" class="st23 st28 st29">November 31-32</text>
+		<text transform="matrix(1 0 0 1 203.4077 53.726)" class="st23 st28 st29">{{month}} {{day}}-{{day+1}}</text>
 	</g>
 	<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="306" y1="592.2222" x2="306" y2="809.7778">
 		<stop  offset="0" style="stop-color:#000000;stop-opacity:0"/>
@@ -1361,7 +1361,7 @@
 	</linearGradient>
 	<rect y="592.22" class="st30" width="612" height="217.56"/>
 	<g class="st0">
-		<text transform="matrix(1 0 0 1 190.2773 742.7782)" class="st23 st28 st29">CodeDay.org/BloNo</text>
+		<text transform="matrix(1 0 0 1 190.2773 742.7782)" class="st23 st28 st29">CodeDay.org/{{url}}</text>
 	</g>
 	<g class="st0">
 		<text transform="matrix(1 0 0 1 223.6533 73.9178)" class="st23 st28 st31">No experience required.</text>

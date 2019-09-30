@@ -4688,7 +4688,7 @@
 	</g>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 269.9648 565)"><tspan x="0" y="0" class="st4 st6 st7">November 31-32, noon-noon</tspan><tspan x="92.68" y="29.87" class="st4 st6 st7">CodeDay.org/BloNo</tspan></text>
+	<text transform="matrix(1 0 0 1 269.9648 565)"><tspan x="0" y="0" class="st4 st6 st7">{{month}} {{day}}-{{day+1}}, noon-noon</tspan><tspan x="92.68" y="29.87" class="st4 st6 st7">CodeDay.org/{{url}}</tspan></text>
 </g>
 <g>
 	<path class="st4" d="M269.71,640.89v4.13h5.67v3.04h-5.67v6.92h-3.46v-17.15h10.6v3.06H269.71z"/>

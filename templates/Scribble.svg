@@ -16278,6 +16278,6 @@
 		<path d="M415.92,424.68h-1.31l1.67-3.8l-2.61-5.85h1.3l1.96,4.63l1.94-4.63h1.3L415.92,424.68z"/>
 		<path d="M420.8,419.51h1.66v1.66h-1.66V419.51z"/>
 	</g>
-	<text transform="matrix(1 0 0 1 177.8373 468.162)"><tspan x="0" y="0" class="st3 st4">November 31-32, noon-noon</tspan><tspan x="35.16" y="30" class="st3 st4">CodeDay.org/BloNo</tspan></text>
+	<text transform="matrix(1 0 0 1 177.8373 468.162)"><tspan x="0" y="0" class="st3 st4">{{month}} {{day}}-{{day+1}}, noon-noon</tspan><tspan x="35.16" y="30" class="st3 st4">CodeDay.org/{{url}}</tspan></text>
 </g>
 </svg>
