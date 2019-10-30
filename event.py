@@ -11,3 +11,4 @@ class Event:
         self.month = self.start.strftime('%B')
         self.short_month = self.start.strftime('%b')
         self.day = self.start.day
+        self.year = self.start.strftime('%Y')
