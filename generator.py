@@ -1,10 +1,10 @@
 import json
 import os
 from jinja2 import Template
-import datetime,pytz
 import requests
 from make_pdf import make_pdf
 from event import Event
+
 
 templateDir = 'templates/'
 templates = []
