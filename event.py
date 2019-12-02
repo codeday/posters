@@ -23,7 +23,6 @@ class Event:
         self.url = self.id
 
     def make_poster(self,template, file_format):
-        template += '.svg'
         supported_files = ['svg','pdf']
         file_format = file_format.lower()
         if file_format not in supported_files:
@@ -56,4 +55,4 @@ class Event:
 
     def make_posters(self,templates=env.list_templates()):
         for template in templates:
-            self.make_poster(template)
+            self.make_poster(template, 'pdf')  # pdf so it makes them both
