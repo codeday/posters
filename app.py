@@ -32,3 +32,8 @@ def generate_all(id):
     event.make_posters()
 
     return send_file(shutil.make_archive('zip/{}'.format(id), 'zip', 'generated/{}'.format(id)))
+
+
+@app.route('/listTemplates')
+def list_templates():
+    return json.dumps([t.replace('.svg', '') for t in env.list_templates()])
