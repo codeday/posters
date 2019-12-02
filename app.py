@@ -8,7 +8,6 @@ env = Environment(
     loader= FileSystemLoader('./templates'),
     autoescape=select_autoescape(['svg'])
 )
-print(env.list_templates())
 @app.route('/')
 def index():
     return "Poster generator"
