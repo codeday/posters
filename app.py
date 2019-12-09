@@ -1,17 +1,18 @@
-from flask import Flask,send_file
+from flask import send_file
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from event import Event
 import requests, json, shutil
+from templates import app
 app = Flask('posters')
 env = Environment(
-    loader= FileSystemLoader('./templates'),
+    loader= FileSystemLoader('./posterTemplates'),
     autoescape=select_autoescape(['svg'])
 )
 @app.route('/')
 def index():
     return "Poster generator"
 
-
+@app.route('')
 @app.route('/generate/<id>/<template>/<file_format>')
 def generate(id, template, file_format='svg'):
     event = requests.get('https://clear.codeday.org/api/region/{}'.format(id))
