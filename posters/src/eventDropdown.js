@@ -18,7 +18,7 @@ const EventDropdown = (props) => {
           <form>
         <datalist id="eventList">
           {props.regions.map(item => (
-            <option key={item.webname}>
+            <option value={item.webname} key={item.name}>
                 {item.name}
             </option>
           ))}

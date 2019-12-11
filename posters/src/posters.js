@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import EventDropdown from './eventDropdown.js';
-import TemplateDropdown from './templateDropdown.js';
 import Poster from './poster.js';
+import Download from './download.js'
 const Posters = () => {
-    const [regions, setRegions] = useState([])
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [regions, setRegions] = useState([]);
+    //const [templates, setTemplates] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const [posterRegion, setPosterRegion] = useState('');
     const [posterTemplate, setPosterTemplate] = useState("Blobs");
@@ -25,14 +26,20 @@ const Posters = () => {
                     setError(error)
                 }
             )
-        }
+    }
     })
-
+    const templates =["ArtistsMeetBlack", "ArtistsMeetLine", "ArtistsMeetRed", "Blobs", "Outrun", "Scribble", "Space", "lastChance"]
     return(
         <>
             <h1>CodeDay Poster Generator</h1>
             <EventDropdown error={error} isLoading={loading} regions={regions} setRegion={setPosterRegion} />
-            <Poster regions={regions} posterRegion={posterRegion} posterTemplate={posterTemplate} posterFormat={posterFormat}/>
+            <Download regions={regions} posterRegion={posterRegion} />
+            <div className={"posterGallery"}>
+            {templates.map(posterTemplate => (
+             <Poster regions={regions} posterRegion={posterRegion} posterTemplate={posterTemplate} posterFormat={posterFormat}/>
+          ))}
+            </div>
+
         </>
     )
 }

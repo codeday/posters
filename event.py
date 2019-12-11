@@ -3,7 +3,7 @@ from make_pdf import make_pdf
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 env = Environment(
-    loader= FileSystemLoader('./templates'),
+    loader= FileSystemLoader('./posterTemplates'),
     autoescape=select_autoescape(['svg'])
 )
 

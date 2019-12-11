@@ -3,16 +3,18 @@ import Loading from './loading.js'
 
 
 const Poster = (props) => {
-    const regionNames = props.regions.map(region => region.name)
+    const regionIds = props.regions.map(region => region.webname)
 
-    if (regionNames.includes(props.posterRegion)) {
+    if (regionIds.includes(props.posterRegion)) {
         return(
-            <img src={`localhost:5000/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}/>
+            <div className={"poster"}>
+                <a href={`http://localhost:5000/generate/${props.posterRegion}/${props.posterTemplate}/pdf`} target="_self" download={`${props.posterRegion}_${props.posterTemplate}`}>
+                    <img src={`http://localhost:5000/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}/>
+                </a>
+            </div>
         )
     } else {
-        return(
-            <p>Please use a Region from the List</p>
-        )
+        return null
     }
 }
 
