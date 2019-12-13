@@ -1,5 +1,0 @@
-jinja2
-requests
-pytz
-flask
-flask-cors

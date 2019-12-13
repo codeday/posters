@@ -1,5 +1,5 @@
-import React from 'react';
-import Loading from './loading.js'
+import React from "react";
+import Loading from "./loading.js";
 class TemplateDropdown extends React.Component {
   constructor(props) {
     super(props);
@@ -11,10 +11,10 @@ class TemplateDropdown extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/listTemplates/", {mode:'no-cors'})
+    fetch("http://localhost:5000/listTemplates/", { mode: "no-cors" })
       .then(res => res.json())
       .then(
-        (result) => {
+        result => {
           this.setState({
             isLoaded: true,
             templates: result
@@ -23,13 +23,13 @@ class TemplateDropdown extends React.Component {
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        error => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
+      );
   }
   render() {
     const { error, isLoaded, templates } = this.state;
@@ -39,19 +39,17 @@ class TemplateDropdown extends React.Component {
       return <Loading />;
     } else {
       return (
-          <div>
+        <div>
           <datalist id="templateList">
-              {templates.map(item => (
-                      <option key={item}>
-                          {item}
-                      </option>
-                  ))}
+            {templates.map(item => (
+              <option key={item}>{item}</option>
+            ))}
           </datalist>
-            <input autoComplete="on" list="templateList"/>
-          </div>
+          <input autoComplete="on" list="templateList" />
+        </div>
       );
     }
   }
 }
 
-export default TemplateDropdown
+export default TemplateDropdown;
