@@ -13,4 +13,4 @@ jobs:
         tag_names: true
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }
-        context: ./API 
+        context: API 
