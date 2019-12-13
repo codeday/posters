@@ -17,6 +17,7 @@ env = Environment(
 app = FastAPI()
 
 app.mount("/generated", StaticFiles(directory="generated"), name="generated")
+app.mount("/static", StaticFiles(directory="./build/static"), name="static")
 
 app.add_middleware(
   CORSMiddleware,
@@ -26,9 +27,13 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
+def file_get_contents(filename):
+    with open(filename) as f:
+        return f.read()
+
 @app.get('/')
 def root():
-  return "Poster Generator API"
+  return HTMLResponse(file_get_contents("./build/index.html"))
 
 @app.get("/api/generate/{id}/{template}/{file_format}")
 def generate(id, template, file_format='svg'):

@@ -8,7 +8,6 @@ env = Environment(
     autoescape=select_autoescape(['svg'])
 )
 
-
 class PosterGenerator:
   def __init__(self,data):
     for key in data:

@@ -7,12 +7,12 @@ const Poster = props => {
     return (
       <div className='poster'>
         <a
-          href={`http://localhost:5000/api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
+          href={`http://localhost:50/api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
           target='_self'
           download={`${props.posterRegion}_${props.posterTemplate}`}
         >
           <img
-            src={`http://localhost:5000/api/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}
+            src={`http://localhost:50/api/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}
           />
         </a>
       </div>

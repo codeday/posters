@@ -10,9 +10,10 @@ generate_API:
 	@docker build ./API/ --no-cache -t srnd/posters-api-fast
 	@echo "API is built"
 
-# generate_react:
-# 	@echo "Building Flask Image..."
-# 	@docker build . -t @srnd/posters-api-fast
+generate_react:
+	@echo "Building React App..."
+	@rm -rf API/build
+	@cd frontend && npm install && npm run build && cp -rf build ../API
 
 deploy: deploy_API
 
