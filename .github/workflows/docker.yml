@@ -12,5 +12,5 @@ jobs:
         registry: docker.pkg.github.com
         tag_names: true
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }
-        context: API 
+        password: ${{ secrets.GITHUB_TOKEN }}
+        context: ./API 
