@@ -27,7 +27,11 @@ class PosterGenerator:
     if file_format not in supported_files:
         return('ERROR: File provided not supported format')
     if template not in env.list_templates():
-        return('ERROR: Template provided not loaded in environment')
+        return({
+          "requested_template": template, 
+          "template_list": env.list_templates(), 
+          "ERROR": 'Template provided not loaded in environment'
+        })
     if not self.current_event:
         return('ERROR: Event not live in Clear')
     file = template

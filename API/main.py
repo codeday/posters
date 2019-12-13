@@ -37,7 +37,7 @@ def generate(id, template, file_format='svg'):
     eventJson = json.loads(eventRequest.text)
   except:
     return "No event found with id {}".format(id),404
-  return PosterGenerator(eventJson).make_poster(template + ".zip",file_format)
+  return PosterGenerator(eventJson).make_poster('{}.svg'.format(template),file_format)
 
 @app.get('/api/generate_all/{id}')
 def generate_all(id):
