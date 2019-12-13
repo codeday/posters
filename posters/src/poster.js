@@ -1,19 +1,25 @@
-import React from 'react';
-import Loading from './loading.js'
+import React from 'react'
 
+const Poster = props => {
+  const regionIds = props.regions.map(region => region.webname)
 
-const Poster = (props) => {
-    const regionNames = props.regions.map(region => region.name)
-
-    if (regionNames.includes(props.posterRegion)) {
-        return(
-            <img src={`localhost:5000/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}/>
-        )
-    } else {
-        return(
-            <p>Please use a Region from the List</p>
-        )
-    }
+  if (regionIds.includes(props.posterRegion)) {
+    return (
+      <div className='poster'>
+        <a
+          href={`http://localhost:5000/api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
+          target='_self'
+          download={`${props.posterRegion}_${props.posterTemplate}`}
+        >
+          <img
+            src={`http://localhost:5000/api/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}
+          />
+        </a>
+      </div>
+    )
+  } else {
+    return null
+  }
 }
 
 export default Poster
