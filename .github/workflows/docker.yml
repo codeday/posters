@@ -8,9 +8,8 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: srnd/posters/posters-api
+        name: srnd/posters/posters
         registry: docker.pkg.github.com
         tag_names: true
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        context: ./API 
