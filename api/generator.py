@@ -1,65 +1,84 @@
-import datetime, pytz, os
+import datetime, pytz, os, subprocess
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from starlette.responses import RedirectResponse
 
 env = Environment(
-    loader= FileSystemLoader('./posterTemplates'),
-    autoescape=select_autoescape(['svg'])
+  loader= FileSystemLoader('./posterTemplates'),
+  autoescape=select_autoescape(['svg'])
 )
 
 class PosterGenerator:
   def __init__(self,data):
+    self.supported_formats = ['svg', 'pdf', 'png']
+
+    self.data = data
     for key in data:
       setattr(self,key,data[key])
+
     if self.current_event:
       self.start = datetime.datetime.fromtimestamp(data['current_event']['starts_at']).astimezone(pytz.timezone(self.timezone))
       self.month = self.start.strftime('%B')
       self.short_month = self.start.strftime('%b')
       self.day = self.start.day
       self.year = self.start.strftime('%Y')
-    self.data = data
+      self.url = self.webname
 
-  def make_poster(self, template, file_format):
-    supported_files = ['svg','pdf']
+  def get_cache(self, file_format, template_name='', full=True):
+    basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
+    return '{}/generated/{}/{}/{}'.format(basedir, self.id, file_format, template_name.replace('svg', file_format))
+
+  def make_poster(self, template_name, file_format):
     file_format = file_format.lower()
-    if file_format not in supported_files:
-        return('ERROR: File provided not supported format')
-    if template not in env.list_templates():
-        return({
-          "requested_template": template, 
-          "template_list": env.list_templates(), 
-          "ERROR": 'Template provided not loaded in environment'
-        })
+    if file_format not in self.supported_formats:
+      return('ERROR: File provided not supported format')
+
+    if template_name not in env.list_templates():
+      return({
+        "requested_template": template_name,
+        "template_list": env.list_templates(),
+        "ERROR": 'Template provided not loaded in environment'
+      })
+
+    if not hasattr(self, 'make_poster_{}'.format(file_format)):
+      return('ERROR: no make_poster method for format')
+
     if not self.current_event:
-        return('ERROR: Event not live in Clear')
-    file = template
-    template = env.get_template(file)
-    id = self.id
-    if not os.path.exists('generated/'):
-        os.mkdir('generated/')
-    if not os.path.exists('generated/{}/'.format(id)):
-        os.mkdir('generated/{}/'.format(id))
-    if not os.path.exists('generated/{}/svg/'.format(id)):
-        os.mkdir('generated/{}/svg/'.format(id))
-    if not os.path.exists('generated/{}/pdf/'.format(id)):
-        os.mkdir('generated/{}/pdf/'.format(id))
-    with open("generated/{}/svg/{}".format(id, file), "w+") as f:
-        f.write(template.render(**vars(self)))
-    # if file_format == 'pdf':
-    #     make_pdf('generated/{}/svg/{}'.format(id, file),
-    #               'generated/{}/pdf/{}'.format(id, file.replace('.svg', '.pdf')))
-    #     return 'generated/{}/pdf/{}'.format(id, file.replace('.svg', '.pdf'))
-    return RedirectResponse(url='/generated/{}/svg/{}'.format(id, file))
+      return('ERROR: Event not live in Clear')
+
+    if not os.path.isfile(self.get_cache(file_format, template_name)):
+      os.makedirs(self.get_cache(file_format), exist_ok=True)
+      getattr(self, 'make_poster_{}'.format(file_format))(template_name)
+
+    return RedirectResponse(url=self.get_cache(file_format, template_name, full=False))
+
+  def require_format(self, template_name, file_format):
+    if not os.path.isfile(self.get_cache(file_format, template_name)):
+      self.make_poster(template_name, file_format)
+
+  def make_poster_svg(self, template_name):
+    template = env.get_template(template_name)
+
+    with open(self.get_cache('svg', template_name), "w+") as f:
+      f.write(template.render(**vars(self)))
+
+  def make_poster_pdf(self, template_name):
+    self.require_format(template_name, 'svg')
+    f_in = self.get_cache('svg', template_name)
+    f_out = self.get_cache('pdf', template_name)
+
+    with open(os.devnull, 'wb') as devnull:
+      subprocess.check_call(['inkscape', '-z', '-f', f_in, '-A', f_out], stdout=devnull, stderr=subprocess.STDOUT)
+
+  def make_poster_png(self, template_name):
+    self.require_format(template_name, 'svg')
+    f_in = self.get_cache('svg', template_name)
+    f_out = self.get_cache('png', template_name)
+
+    with open(os.devnull, 'wb') as devnull:
+      subprocess.check_call(['inkscape', '-z', '-w', '600', '-f', f_in, '-e', f_out], stdout=devnull, stderr=subprocess.STDOUT)
 
   def make_posters(self,templates=env.list_templates()):
-    for template in templates:
-      self.make_poster(template, 'svg')  # pdf so it makes them both
-
-  # def make_pdf(input,output):
-  #     if os.path.isfile(input):
-  #         with open(os.devnull, 'wb') as devnull:
-  #             subprocess.check_call(['inkscape {} --export-pdf={}'.format(input, output)], stdout=devnull, stderr=subprocess.STDOUT)
-  #     else:
-  #         print('Input file does not exist')
-  #         return
+    for template_name in templates:
+      for file_format in self.supported_formats:
+        self.make_poster(template_name, file_format)
