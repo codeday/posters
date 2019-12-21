@@ -22,7 +22,8 @@ class PosterGenerator:
       self.short_month = self.start.strftime('%b')
       self.day = self.start.day
       self.year = self.start.strftime('%Y')
-      self.url = self.webname
+      self.webname = self.current_event['webname']
+      self.url = self.current_event['webname']
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
