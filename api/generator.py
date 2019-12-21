@@ -1,16 +1,17 @@
 import datetime, pytz, os, subprocess
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from starlette.responses import RedirectResponse
+from starlette.responses import RedirectResponse, FileResponse
 
 env = Environment(
-  loader= FileSystemLoader('./posterTemplates'),
+  loader= FileSystemLoader('./remote/templates/template'),
   autoescape=select_autoescape(['svg'])
 )
 
 class PosterGenerator:
-  def __init__(self,data):
+  def __init__(self, data, promo):
     self.supported_formats = ['svg', 'pdf', 'png']
+    self.promo = promo
 
     self.data = data
     for key in data:
@@ -51,7 +52,7 @@ class PosterGenerator:
       os.makedirs(self.get_cache(file_format), exist_ok=True)
       getattr(self, 'make_poster_{}'.format(file_format))(template_name)
 
-    return RedirectResponse(url=self.get_cache(file_format, template_name, full=False))
+    return FileResponse(path=self.get_cache(file_format, template_name))
 
   def require_format(self, template_name, file_format):
     if not os.path.isfile(self.get_cache(file_format, template_name)):

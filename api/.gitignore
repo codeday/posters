@@ -2,3 +2,4 @@ generated/
 zip/
 __pycache__/
 build/
+remote/

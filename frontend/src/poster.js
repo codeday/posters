@@ -7,23 +7,24 @@ const Poster = props => {
     return (
       <div className='poster'>
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
-          target="_blank"
-          download={`${props.posterRegion}_${props.posterTemplate}`}
+          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
+          target="_self"
+          download={`${props.posterRegion}_${props.posterTemplate}${props.posterPromo ? '_'+props.posterPromo : ''}.pdf`}
         >
           <img
-            src={`api/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}
+            src={`/preview/${props.posterTemplate}.png`}
             style={{width: '300px'}}
           />
         </a>
         <br />
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/png`}
+          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/png?promo=${encodeURIComponent(props.posterPromo)}`}
           target="_blank"
         >png</a>,
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
-          target="_blank"
+          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
+          target="_self"
+          download={`${props.posterRegion}_${props.posterTemplate}${props.posterPromo ? '_'+props.posterPromo : ''}.pdf`}
         >pdf</a>
       </div>
     )

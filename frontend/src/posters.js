@@ -8,6 +8,7 @@ const Posters = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  const [posterPromo, setPosterPromo] = useState('YOURCODE')
   const [posterRegion, setPosterRegion] = useState('')
   const [posterFormat, setPosterFormat] = useState('svg')
 
@@ -39,14 +40,18 @@ const Posters = () => {
   ]
   return (
     <>
-      <h1>CodeDay Poster Generator</h1>
-      <p>(Fonts may not work properly in the preview.)</p>
       <EventDropdown
         error={error}
         isLoading={loading}
         regions={regions}
         setRegion={setPosterRegion}
       />
+      <input
+        type="text"
+        value={posterPromo}
+        placeholder="Optional promo code"
+        onChange={e => setPosterPromo(e.target.value)}
+        />
       {/* <Download regions={regions} posterRegion={posterRegion} /> */}
       <div className='posterGallery'>
         {templates.map((template) => (
@@ -56,6 +61,7 @@ const Posters = () => {
             posterRegion={posterRegion}
             posterTemplate={template}
             posterFormat={posterFormat}
+            posterPromo={posterPromo}
           />
         ))}
       </div>
