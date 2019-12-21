@@ -27,6 +27,11 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
   && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner
 
+# Set up Cron
+RUN apt-get -y install cron
+COPY tasks /etc/cron.d/tasks
+RUN chmod 0644 /etc/cron.d/tasks && crontab /etc/cron.d/tasks
+
 # Copy the app files
 COPY ./api /app
 COPY ./frontend /frontend
@@ -49,4 +54,5 @@ RUN rm -rf /usr/local/bin/node \
 
 WORKDIR /app
 EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]

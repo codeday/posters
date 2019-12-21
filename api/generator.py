@@ -9,9 +9,10 @@ env = Environment(
 )
 
 class PosterGenerator:
-  def __init__(self, data, promo):
+  def __init__(self, data, promo=None, promoFor=None):
     self.supported_formats = ['svg', 'pdf', 'png']
     self.promo = promo
+    self.promoFor = promoFor
 
     self.data = data
     for key in data:
@@ -28,7 +29,7 @@ class PosterGenerator:
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
-    return '{}/generated/{}/{}/{}'.format(basedir, self.current_event['id'], file_format, template_name.replace('svg', file_format))
+    return '{}/generated/{}/{}/{}_{}_{}'.format(basedir, self.current_event['id'], file_format, self.promo, self.promoFor, template_name.replace('svg', file_format))
 
   def make_poster(self, template_name, file_format):
     file_format = file_format.lower()

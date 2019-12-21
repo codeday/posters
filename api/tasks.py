@@ -22,10 +22,16 @@ def sync_templates():
 
 def cleanup():
   for dir in ('generated', 'zip'):
-    for subdir in os.listdir(dir):
-      path = os.path.realpath(os.path.join(dir, subdir))
-      if (os.path.basename(path) != '.gitkeep'):
-        if (os.path.isdir(path)):
-          shutil.rmtree(path)
-        else:
-          os.remove(path)
+    if (os.path.exists(dir)):
+      for subdir in os.listdir(dir):
+        path = os.path.realpath(os.path.join(dir, subdir))
+        if (os.path.basename(path) != '.gitkeep'):
+          if (os.path.isdir(path)):
+            shutil.rmtree(path)
+          else:
+            os.remove(path)
+
+if __name__ == "__main__":
+  print("Running tasks...")
+  sync_templates()
+  cleanup()

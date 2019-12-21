@@ -16,7 +16,7 @@ const EventDropdown = props => {
     return <Loading />;
   } else {
     return (
-      <div style={{zIndex: 100}}>
+      <div style={{zIndex: 1000, position: 'relative'}}>
         <Select
           value={inputValue}
           options={props.regions.map(item => ({value: item.webname, label: item.name}))}
