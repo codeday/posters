@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import Select from "react-select";
 import Loading from "./loading.js";
+
 const EventDropdown = props => {
   const [inputValue, setInputValue] = useState("");
 
-  function handleChange(event) {
-    setInputValue(event.target.value);
-    props.setRegion(event.target.value);
+  function handleChange(newSelection) {
+    setInputValue(newSelection);
+    props.setRegion(newSelection.value);
   }
 
   if (props.error) {
@@ -14,22 +16,12 @@ const EventDropdown = props => {
     return <Loading />;
   } else {
     return (
-      <div>
-        <form>
-          <datalist id="eventList">
-            {props.regions.map(item => (
-              <option value={item.webname} key={item.name}>
-                {item.name}
-              </option>
-            ))}
-          </datalist>
-          <input
-            autoComplete="on"
-            value={inputValue}
-            list="eventList"
-            onChange={handleChange}
+      <div style={{zIndex: 100}}>
+        <Select
+          value={inputValue}
+          options={props.regions.map(item => ({value: item.webname, label: item.name}))}
+          onChange={handleChange}
           />
-        </form>
       </div>
     );
   }

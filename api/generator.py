@@ -26,7 +26,7 @@ class PosterGenerator:
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
-    return '{}/generated/{}/{}/{}'.format(basedir, self.id, file_format, template_name.replace('svg', file_format))
+    return '{}/generated/{}/{}/{}'.format(basedir, self.current_event['id'], file_format, template_name.replace('svg', file_format))
 
   def make_poster(self, template_name, file_format):
     file_format = file_format.lower()

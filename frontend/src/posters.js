@@ -9,7 +9,7 @@ const Posters = () => {
   const [loading, setLoading] = useState(false)
 
   const [posterRegion, setPosterRegion] = useState('')
-  const [posterFormat, setPosterFormat] = useState('png')
+  const [posterFormat, setPosterFormat] = useState('svg')
 
   useEffect(() => {
     if (regions.length == 0) {
@@ -40,7 +40,8 @@ const Posters = () => {
   return (
     <>
       <h1>CodeDay Poster Generator</h1>
-      City webname: <EventDropdown
+      <p>(Fonts may not work properly in the preview.)</p>
+      <EventDropdown
         error={error}
         isLoading={loading}
         regions={regions}

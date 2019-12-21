@@ -8,13 +8,23 @@ const Poster = props => {
       <div className='poster'>
         <a
           href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
-          target='_self'
+          target="_blank"
           download={`${props.posterRegion}_${props.posterTemplate}`}
         >
           <img
             src={`api/generate/${props.posterRegion}/${props.posterTemplate}/${props.posterFormat}`}
+            style={{width: '300px'}}
           />
         </a>
+        <br />
+        <a
+          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/png`}
+          target="_blank"
+        >png</a>,
+        <a
+          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf`}
+          target="_blank"
+        >pdf</a>
       </div>
     )
   } else {
