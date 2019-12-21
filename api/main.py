@@ -45,7 +45,7 @@ def cron():
   cleanup()
   return HTMLResponse('ok')
 
-@app.get("/api/generate/{id}/{template}/{file_format}")
+@app.get("/render/{id}/{template}/{file_format}")
 def generate(id, template, file_format='svg', promo=None):
   eventRequest = requests.get('https://clear.codeday.org/api/region/{}'.format(id))
   try:
@@ -55,7 +55,7 @@ def generate(id, template, file_format='svg', promo=None):
 
   return PosterGenerator(eventJson, promo).make_poster('{}.svg'.format(template),file_format)
 
-@app.get('/api/generate_all/{id}')
+@app.get('/render_all/{id}')
 def generate_all(id, promo=None):
   eventRequest = requests.get('https://clear.codeday.org/api/region/{}'.format(id))
   try:

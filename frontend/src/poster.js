@@ -7,7 +7,7 @@ const Poster = props => {
     return (
       <div className='poster'>
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
+          href={`render/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
           target="_self"
           download={`${props.posterRegion}_${props.posterTemplate}${props.posterPromo ? '_'+props.posterPromo : ''}.pdf`}
         >
@@ -18,11 +18,11 @@ const Poster = props => {
         </a>
         <br />
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/png?promo=${encodeURIComponent(props.posterPromo)}`}
+          href={`render/${props.posterRegion}/${props.posterTemplate}/png?promo=${encodeURIComponent(props.posterPromo)}`}
           target="_blank"
         >png</a>,
         <a
-          href={`api/generate/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
+          href={`render/${props.posterRegion}/${props.posterTemplate}/pdf?promo=${encodeURIComponent(props.posterPromo)}`}
           target="_self"
           download={`${props.posterRegion}_${props.posterTemplate}${props.posterPromo ? '_'+props.posterPromo : ''}.pdf`}
         >pdf</a>
