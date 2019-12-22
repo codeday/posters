@@ -1,5 +1,6 @@
 import datetime, pytz, os, subprocess
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+import hashlib
 
 from starlette.responses import RedirectResponse, FileResponse
 
@@ -13,6 +14,7 @@ class PosterGenerator:
     self.supported_formats = ['svg', 'pdf', 'png']
     self.promo = promo
     self.promoFor = promoFor
+    self.hash = hashlib.md5('{}_{}'.format(promo,promoFor).encode('utf8')).hexdigest()
 
     self.data = data
     for key in data:
@@ -29,7 +31,9 @@ class PosterGenerator:
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
-    return '{}/generated/{}/{}/{}_{}_{}'.format(basedir, self.current_event['id'], file_format, self.promo, self.promoFor, template_name.replace('svg', file_format))
+    fname = '{}_{}'.format(self.hash, template_name.replace('svg', file_format)) if template_name else ''
+    return '{}/generated/{}/{}/{}'.format(basedir, self.current_event['id'], file_format, fname)
+
 
   def make_poster(self, template_name, file_format):
     file_format = file_format.lower()

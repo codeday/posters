@@ -1,6 +1,6 @@
 import requests, json, shutil
 
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from starlette.middleware.cors import CORSMiddleware
@@ -8,10 +8,9 @@ from starlette.responses import HTMLResponse, FileResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
 from generator import PosterGenerator
-from tasks import sync_templates, cleanup
+from tasks import run_tasks
 
-sync_templates()
-cleanup()
+run_tasks()
 
 env = Environment(
   loader= FileSystemLoader('./remote/templates/template'),
@@ -20,7 +19,7 @@ env = Environment(
 
 app = FastAPI()
 
-app.mount("/preview", StaticFiles(directory="./remote/templates/preview"), name="preview")
+app.mount("/preview", StaticFiles(directory="./preview"), name="preview")
 app.mount("/static", StaticFiles(directory="./build/static"), name="static")
 
 app.add_middleware(
@@ -40,9 +39,8 @@ def root():
   return HTMLResponse(file_get_contents("./build/index.html"))
 
 @app.get('/sync')
-def sync():
-  sync_templates()
-  cleanup()
+def sync(background_tasks: BackgroundTasks):
+  background_tasks.add_task(run_tasks)
   return HTMLResponse('ok')
 
 @app.get("/render/{id}/{template}/{file_format}")
@@ -62,7 +60,7 @@ def generate_all(id, promo=None):
     eventJson = json.loads(eventRequest.text)
   except:
     return "No event found with id {}".format(id),404
-  PosterGenerator(eventJson, promo).make_posters(env.list_templates())
+  PosterGenerator(eventJson, promo, promoFor).make_posters(env.list_templates())
 
   return FileResponse(shutil.make_archive('zip/{}'.format(id), 'zip', 'generated/{}'.format(eventJson.current_event['id'])), filename='{}.zip'.format(id))
 

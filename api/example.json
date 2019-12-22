@@ -1,0 +1,48 @@
+{
+  "id": "region",
+  "name": "Hometown",
+  "webname": "region",
+  "abbr": "NIL",
+  "location": {
+    "lat": 0,
+    "lng": 0
+  },
+  "timezone": "America/Los_Angeles",
+  "timezone_group": "Pacific",
+  "current_event": {
+    "id": "example",
+    "name": "CodeDay Hometown Winter 1970",
+    "region_name": "Hometown",
+    "region_id": "region",
+    "webname": "region",
+    "timezone": "America/Los_Angeles",
+    "hashtag": "region",
+    "urls": {
+      "home": "https://codeday.org/region",
+      "register": "https://codeday.org/region/register"
+    },
+    "starts_at": 1581796800,
+    "ends_at": 1581883200,
+    "venue": {
+      "name": "VenueCorp",
+      "address": {
+        "line_1": "555 Post St",
+        "line_2": null,
+        "city": "SF",
+        "state": "CA",
+        "postal": "94102",
+        "country": "US"
+      },
+      "full_address": "555 Post St, SF CA 94102, US"
+    },
+    "loaners": {
+      "total": 0,
+      "available": 0
+    },
+    "venue_agreement": null,
+    "stripe_public_key": "pk_v0AIOIy377403GN0FKltGR9gOAAUe",
+    "notice": null,
+    "overflow_event": null,
+    "has_related_events": false
+  }
+}

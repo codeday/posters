@@ -1,6 +1,9 @@
 import time, threading
 import os, tempfile, zipfile, shutil
 from urllib import request
+from generator import PosterGenerator
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+import json
 
 def sync_templates():
   zip_path = os.path.join(tempfile.mkdtemp(), 'templates.zip')
@@ -20,6 +23,25 @@ def sync_templates():
   shutil.rmtree('remote/templates_old', ignore_errors=True)
   os.remove(zip_path)
 
+
+  # Generate samples
+  env = Environment(
+    loader= FileSystemLoader('./remote/templates/template'),
+    autoescape=select_autoescape(['svg'])
+  )
+
+  with open('example.json', 'r') as exFile:
+    data=json.loads(exFile.read())
+
+  shutil.rmtree('generated/example', ignore_errors=True)
+  PosterGenerator(data, 'PROMO', '20% off').make_posters(env.list_templates())
+  shutil.rmtree('preview', ignore_errors=True)
+  os.rename('generated/example/png', 'preview')
+  shutil.rmtree('generated/example', ignore_errors=True)
+  for f in os.listdir('preview'):
+    os.rename('preview/{}'.format(f), 'preview/{}'.format(f[str.index(f, '_')+1:]));
+
+
 def cleanup():
   for dir in ('generated', 'zip'):
     if (os.path.exists(dir)):
@@ -31,7 +53,11 @@ def cleanup():
           else:
             os.remove(path)
 
-if __name__ == "__main__":
-  print("Running tasks...")
+def run_tasks():
   sync_templates()
   cleanup()
+
+
+if __name__ == "__main__":
+  print("Running tasks...")
+  run_tasks()
