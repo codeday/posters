@@ -84,7 +84,7 @@ class PosterGenerator:
     f_out = self.get_cache('png', template_name)
 
     with open(os.devnull, 'wb') as devnull:
-      subprocess.check_call(['inkscape', '-z', '-w', '600', '-f', f_in, '-e', f_out], stdout=devnull, stderr=subprocess.STDOUT)
+      subprocess.check_call(['inkscape', '-z', '-f', f_in, '-e', f_out], stdout=devnull, stderr=subprocess.STDOUT)
 
   def make_posters(self,templates=env.list_templates()):
     for template_name in templates:
