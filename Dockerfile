@@ -38,7 +38,8 @@ RUN npm install \
 
 # Install the python app
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt --target=/cronpkg
 
 # Cleanup
 RUN rm -rf /usr/local/bin/node \

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="396.875mm"
+   height="132.29167mm"
+   viewBox="0 0 396.875 132.29167"
+   version="1.1"
+   id="svg38234"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="Twitter.svg">
+  <defs
+     id="defs38228" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="905.16118"
+     inkscape:cy="193.83163"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1600"
+     inkscape:window-height="881"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata38231">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(184.0744,-205.15181)">
+    <rect
+       style="opacity:1;fill:#ff686b;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect38790"
+       width="396.875"
+       height="132.29167"
+       x="-184.0744"
+       y="205.15179" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.80771255px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.43349397"
+       x="-174.25409"
+       y="225.44585"
+       id="text38794"><tspan
+         sodipodi:role="line"
+         id="tspan38792"
+         x="-174.25409"
+         y="225.44585"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro';text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.43349397">CodeDay {{name}}</tspan><tspan
+         sodipodi:role="line"
+         x="-174.25409"
+         y="252.23453"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.5598402px;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro';text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.43349397"
+         id="tspan50078">by SRND</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:12.69999981px;line-height:0.64999998;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro Ultra-Bold';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="209.32497"
+       y="323.99753"
+       id="text6018-6"><tspan
+         sodipodi:role="line"
+         x="209.32497"
+         y="323.99753"
+         style="font-size:6.58513546px;line-height:0.64999998;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan54198">{%if promo%}Use code &quot;{{promo}}&quot; for {%if promoFor%}{{promoFor}}{%else%}a discount{%endif%}{%endif%}</tspan><tspan
+         sodipodi:role="line"
+         x="209.32497"
+         y="332.25253"
+         style="font-size:6.58513546px;line-height:0.64999998;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan54202" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-55.184521"
+       y="266.7619"
+       id="text50082"><tspan
+         sodipodi:role="line"
+         id="tspan50080"
+         x="-55.184521"
+         y="278.28638"
+         style="stroke-width:0.26458332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.27117348px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.35981613"
+       x="208.01059"
+       y="275.44968"
+       id="text20960"><tspan
+         sodipodi:role="line"
+         id="tspan20958"
+         x="208.01057"
+         y="275.44968"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.87811852px;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.35981613">{{short_month}}. {{day}}-{{day+1}}, {{year}}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.33916473px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.13206592"
+       x="207.69771"
+       y="285.97171"
+       id="text20964"><tspan
+         sodipodi:role="line"
+         id="tspan20962"
+         x="207.69771"
+         y="285.97171"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.3499999px;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.13206592">{{current_event.venue['name']}}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-57.074406"
+       y="281.88095"
+       id="text53388"><tspan
+         sodipodi:role="line"
+         x="-57.074406"
+         y="293.40543"
+         style="stroke-width:0.26458332"
+         id="tspan53390" /></text>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,187.39256,223.7205)"
+       id="g3408"
+       style="fill:#ffffff;fill-opacity:1">
+      <path
+         id="path3410"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 0,0 -7.282,-6.859 c 2.445,-2.487 7.949,-7.311 7.949,-7.311 0,0 11.596,-10.159 16.598,-17.349 l 4.206,-6.044 4.067,6.138 c 4.831,7.291 16.664,17.785 16.664,17.785 0,0 5.023,4.461 7.291,6.731 L 42.071,-0.18 21.292,-20.368 Z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,199.87074,210.44355)"
+       id="g3412"
+       style="fill:#ffffff;fill-opacity:1">
+      <path
+         id="path3414"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 0,0 c -2.705,0 -5.342,-0.489 -7.814,-1.389 v 0.006 C -7.846,-1.395 -7.878,-1.409 -7.91,-1.421 -8.062,-1.477 -8.211,-1.54 -8.362,-1.6 c -0.309,-0.121 -0.616,-0.247 -0.919,-0.381 -0.172,-0.076 -0.342,-0.156 -0.512,-0.236 -0.289,-0.137 -0.575,-0.28 -0.858,-0.428 -0.155,-0.082 -0.311,-0.162 -0.465,-0.247 -0.367,-0.202 -0.727,-0.415 -1.082,-0.638 -0.059,-0.037 -0.121,-0.07 -0.179,-0.107 -0.16,-0.102 -0.312,-0.216 -0.469,-0.322 v -12.777 l 3.876,3.129 c 0.368,0.348 0.752,0.678 1.156,0.981 2.223,1.667 4.955,2.626 7.814,2.626 7.221,0 13.095,-5.873 13.095,-13.09 0,-4.703 -1.529,-8.455 -4.096,-11.974 l 7.441,-6.745 c 3.975,5.131 6.655,11.012 6.655,18.719 C 23.095,-10.358 12.735,0 0,0"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,192.0351,214.96256)"
+       id="g3416"
+       style="fill:#ffffff;fill-opacity:1">
+      <path
+         id="path3418"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="M 0,0 3.82,-3.083 V 9.704 C 3.732,9.763 3.648,9.825 3.56,9.883 3.433,9.966 3.306,10.05 3.178,10.131 2.82,10.354 2.458,10.568 2.089,10.772 1.905,10.874 1.717,10.968 1.53,11.065 c -0.245,0.127 -0.491,0.252 -0.74,0.37 -0.209,0.099 -0.42,0.195 -0.632,0.288 -0.239,0.104 -0.48,0.203 -0.722,0.299 -0.215,0.086 -0.43,0.173 -0.648,0.253 -0.04,0.014 -0.078,0.032 -0.118,0.046 v -0.007 c -2.438,0.873 -5.034,1.35 -7.696,1.35 -12.735,0 -23.096,-10.359 -23.096,-23.091 0,-7.704 2.478,-13.554 6.207,-18.589 l 7.357,6.929 c -2.248,3.363 -3.564,7.042 -3.564,11.66 0,7.219 5.875,13.091 13.096,13.091 2.808,0 5.495,-0.925 7.696,-2.539 C -0.922,0.826 -0.534,0.498 -0.161,0.153 -0.12,0.115 -0.078,0.078 -0.037,0.039 -0.024,0.027 -0.013,0.012 0,0"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,313.11254,228.59634)"
+       id="g3444"
+       style="fill:#ffffff;fill-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.39284"
+       y="314.38693"
+       id="text949"><tspan
+         sodipodi:role="line"
+         id="tspan947"
+         x="113.39284"
+         y="325.91141"
+         style="stroke-width:0.26458332"></tspan></text>
+    <text
+       id="text955"
+       y="316.58917"
+       x="209.32497"
+       style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:12.69999981px;line-height:0.64999998;font-family:'Sofia Pro';-inkscape-font-specification:'Sofia Pro Ultra-Bold';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan951"
+         style="font-size:6.58513546px;line-height:0.64999998;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332"
+         y="316.58917"
+         x="209.32497"
+         sodipodi:role="line">codeday.org/{{url}}</tspan><tspan
+         id="tspan953"
+         style="font-size:6.58513546px;line-height:0.64999998;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332"
+         y="324.84418"
+         x="209.32497"
+         sodipodi:role="line" /></text>
+  </g>
+</svg>
