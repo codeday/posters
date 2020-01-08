@@ -1,14 +1,8 @@
 FROM python:3.8-buster
 
-# Install fonts
-ADD https://f1.srnd.org/fonts/posters-1.zip /fonts.zip
-RUN apt-get install -y unzip \
-  && unzip /fonts.zip -d /usr/share/fonts \
-  && fc-cache -f
-
 # Install Inkscape
 RUN apt-get update \
-  && apt-get -y install inkscape
+  && apt-get -y install inkscape unzip
 
 # Install Node
 RUN mkdir /node
