@@ -28,6 +28,7 @@ class PosterGenerator:
       self.year = self.start.strftime('%Y')
       self.webname = self.current_event['webname']
       self.url = self.current_event['webname']
+      self.name = self.current_event['region_name']
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''
@@ -83,7 +84,7 @@ class PosterGenerator:
     f_out = self.get_cache('png', template_name)
 
     with open(os.devnull, 'wb') as devnull:
-      subprocess.check_call(['inkscape', '-z', '-w', '600', '-f', f_in, '-e', f_out], stdout=devnull, stderr=subprocess.STDOUT)
+      subprocess.check_call(['inkscape', '-z', '-f', f_in, '-e', f_out], stdout=devnull, stderr=subprocess.STDOUT)
 
   def make_posters(self,templates=env.list_templates()):
     for template_name in templates:
