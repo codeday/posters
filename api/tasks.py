@@ -7,7 +7,7 @@ import json
 
 def sync_templates():
   zip_path = os.path.join(tempfile.mkdtemp(), 'templates.zip')
-  request.urlretrieve("https://github.com/srnd/CodeDayPosterTemplates/archive/master.zip", zip_path)
+  request.urlretrieve("https://github.com/codeday/poster-templates/archive/master.zip", zip_path)
 
   os.makedirs('remote/templates_new')
   with zipfile.ZipFile(zip_path, 'r') as zip_ref:
