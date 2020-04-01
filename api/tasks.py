@@ -12,7 +12,7 @@ def sync_templates():
   os.makedirs('remote/templates_new')
   with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall('remote/')
-    os.rename('remote/CodeDayPosterTemplates-master', 'remote/templates_new')
+    os.rename('remote/poster-templates-master', 'remote/templates_new')
 
   try:
     os.rename('remote/templates', 'remote/templates_old')
