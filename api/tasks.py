@@ -5,6 +5,7 @@ from generator import PosterGenerator
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import json
 
+
 def sync_templates():
   zip_path = os.path.join(tempfile.mkdtemp(), 'templates.zip')
   request.urlretrieve("https://github.com/codeday/poster-templates/archive/master.zip", zip_path)
