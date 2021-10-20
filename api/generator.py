@@ -21,7 +21,11 @@ class PosterGenerator:
       setattr(self,key,data[key])
 
     if self.current_event:
-      self.start = datetime.datetime.fromtimestamp(data['current_event']['starts_at']).astimezone(pytz.timezone(self.timezone))
+      self.start = datetime.datetime.now()
+      if type(data['current_event']['starts_at']) is int:
+        self.start = datetime.datetime.fromtimestamp(data['current_event']['starts_at']).astimezone(pytz.timezone(self.timezone))
+      elif type(data['current_event']['starts_at']) is str:
+        self.start = datetime.datetime.fromisoformat(data['current_event']['starts_at'].replace("Z", "+00:00"))
       self.month = self.start.strftime('%B')
       self.short_month = self.start.strftime('%b')
       self.day = self.start.day

@@ -10,7 +10,12 @@ from starlette.staticfiles import StaticFiles
 from generator import PosterGenerator
 from tasks import run_tasks
 
+from gql import gql, Client
+from gql.transport.aiohttp import AIOHTTPTransport
+
 run_tasks()
+
+client = Client(transport=AIOHTTPTransport(url="https://graph.codeday.org/"), fetch_schema_from_transport=False)
 
 env = Environment(
   loader= FileSystemLoader('./remote/templates/template'),
@@ -42,24 +47,42 @@ def root():
 def sync(background_tasks: BackgroundTasks):
   background_tasks.add_task(run_tasks)
   return HTMLResponse('ok')
+  
+QUERY = gql(
+    """
+    query GetClearEvent($name: String!) {
+      clear {
+        findFirstEvent(where:{contentfulWebname:{equals:$name}}) {
+          region_name: name
+          webname: contentfulWebname
+          starts_at: startDate
+          id
+        }
+      }
+    }
+  """
+  )
 
 @app.get("/render/{id}/{template}/{file_format}")
-def generate(id, template, file_format='svg', promo=None, promoFor=None):
-  eventRequest = requests.get('https://clear.codeday.org/api/region/{}'.format(id))
+async def generate(id, template, file_format='svg', promo=None, promoFor=None):
   try:
-    eventJson = json.loads(eventRequest.text)
-  except:
-    return "No event found with id {}".format(id),404
+    result = await client.execute_async(QUERY, variable_values={"name": id})
+    eventJson = {"current_event": result["clear"]["findFirstEvent"]}
+  except Exception as e:
+    print(e)
+    return e
 
   return PosterGenerator(eventJson, promo, promoFor).make_poster('{}.svg'.format(template),file_format)
 
 @app.get('/render_all/{id}')
-def generate_all(id, promo=None):
-  eventRequest = requests.get('https://clear.codeday.org/api/region/{}'.format(id))
+async def generate_all(id, promo=None, promoFor=None):
   try:
-    eventJson = json.loads(eventRequest.text)
-  except:
-    return "No event found with id {}".format(id),404
+    result = await client.execute_async(QUERY, variable_values={"name": id})
+    eventJson = {"current_event": result["clear"]["findFirstEvent"]}
+  except Exception as e:
+    print(e)
+    return e
+
   PosterGenerator(eventJson, promo, promoFor).make_posters(env.list_templates())
 
   return FileResponse(shutil.make_archive('zip/{}'.format(id), 'zip', 'generated/{}'.format(eventJson.current_event['id'])), filename='{}.zip'.format(id))
