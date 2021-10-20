@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import EventDropdown from './eventDropdown'
 import Poster from './poster'
 import PromoInfo from './promoInfo'
+import { gql } from 'graphql-tag';
+import { apiFetch } from '@codeday/topo/utils'
 
 // import Download from './download.js'
 const Posters = () => {
@@ -15,25 +17,30 @@ const Posters = () => {
   const [posterPromoFor, setPosterPromoFor] = useState('')
   const [posterRegion, setPosterRegion] = useState('')
   const [posterFormat, setPosterFormat] = useState('svg')
-
-  useEffect(() => {
-    if (regions.length === 0) {
-      fetch('https://clear.codeday.org/api/regions/')
-        .then(res => res.json())
-        .then(
-          result => {
-            setLoading(true)
-            setRegions(result.filter(region => region.current_event != null))
-          },
-          error => {
-            setLoading(true)
-            setError(error)
-          }
-        )
+  const query = gql`
+    {
+      clear {
+        events {
+          name
+          contentfulWebname
+        }
+      }
     }
-  });
+  `
 
   useEffect(() => {
+    if (regions.length === 0 && !error) {
+      apiFetch(query).then(result => {
+        if (result) {
+          setLoading(true)
+          setRegions(result.clear.events.map(item => ({ webname: item.contentfulWebname, name: item.name })))
+        }
+      }).catch((error) => {
+        console.error(error);
+        setLoading(true)
+        setError(error)
+      });
+    }
     if (templates.length === 0) {
       fetch('/api/list-templates')
         .then(res => res.json())
