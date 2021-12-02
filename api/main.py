@@ -74,8 +74,9 @@ QUERY = gql(
 async def generate(id, template, file_format='svg', promo=None, promoFor=None):
   try:
     result = await client.execute_async(QUERY, variable_values={"name": id})
-    result["clear"]["findFirstEvent"]["venue"]["address"] = {
-        "line_1": result["clear"]["findFirstEvent"]["venue"]["line_1"], "postal": result["clear"]["findFirstEvent"]["venue"]["postal"], "state": result["clear"]["findFirstEvent"]["venue"]["state"], "city": result["clear"]["findFirstEvent"]["venue"]["city"]}
+    if result["clear"]["findFirstEvent"]["venue"]:
+        result["clear"]["findFirstEvent"]["venue"]["address"] = {
+            "line_1": result["clear"]["findFirstEvent"]["venue"]["line_1"], "postal": result["clear"]["findFirstEvent"]["venue"]["postal"], "state": result["clear"]["findFirstEvent"]["venue"]["state"], "city": result["clear"]["findFirstEvent"]["venue"]["city"]}
     eventJson = {"current_event": result["clear"]["findFirstEvent"]}
   except Exception as e:
     print(e)
