@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests, json, shutil
 
 from fastapi import FastAPI, BackgroundTasks
@@ -52,7 +53,7 @@ QUERY = gql(
     """
     query GetClearEvent($name: String!) {
       clear {
-        findFirstEvent(where:{contentfulWebname:{equals:$name}}) {
+        findFirstEvent(where:{contentfulWebname:{equals:$name},startDate:{gte:$date}}) {
           region_name: name
           webname: contentfulWebname
           starts_at: startDate
@@ -73,7 +74,7 @@ QUERY = gql(
 @app.get("/render/{id}/{template}/{file_format}")
 async def generate(id, template, file_format='svg', promo=None, promoFor=None):
   try:
-    result = await client.execute_async(QUERY, variable_values={"name": id})
+    result = await client.execute_async(QUERY, variable_values={"name": id, "date": (datetime.now()).isoformat()})
     if result["clear"]["findFirstEvent"]["venue"]:
         result["clear"]["findFirstEvent"]["venue"]["address"] = {
             "line_1": result["clear"]["findFirstEvent"]["venue"]["line_1"], "postal": result["clear"]["findFirstEvent"]["venue"]["postal"], "state": result["clear"]["findFirstEvent"]["venue"]["state"], "city": result["clear"]["findFirstEvent"]["venue"]["city"]}
