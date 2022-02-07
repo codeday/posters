@@ -51,7 +51,7 @@ def sync(background_tasks: BackgroundTasks):
   
 QUERY = gql(
     """
-    query GetClearEvent($name: String!) {
+    query GetClearEvent($name: String!, $date: ClearDateTime!) {
       clear {
         findFirstEvent(where:{contentfulWebname:{equals:$name},startDate:{gte:$date}}) {
           region_name: name
