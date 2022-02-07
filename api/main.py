@@ -88,7 +88,7 @@ async def generate(id, template, file_format='svg', promo=None, promoFor=None):
 @app.get('/render_all/{id}')
 async def generate_all(id, promo=None, promoFor=None):
   try:
-    result = await client.execute_async(QUERY, variable_values={"name": id})
+    result = await client.execute_async(QUERY, variable_values={"name": id, "date": (datetime.now()).isoformat()})
     eventJson = {"current_event": result["clear"]["findFirstEvent"]}
   except Exception as e:
     print(e)
