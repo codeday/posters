@@ -33,6 +33,15 @@ class PosterGenerator:
       self.webname = self.current_event['webname']
       self.url = self.current_event['webname']
       self.name = self.current_event['region_name']
+      self.price = self.current_event['price']
+      if self.current_event['group_price']:
+        self.group_price = self.current_event['group_price']
+      else:
+        self.group_price = self.price
+      if self.current_event['region']['currency_symbol']:
+        self.currency_symbol = self.current_event['region']['currency_symbol']
+      else:
+        self.currency_symbol = '$'
 
   def get_cache(self, file_format, template_name='', full=True):
     basedir = os.path.dirname(os.path.realpath(__file__)) if full else ''

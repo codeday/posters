@@ -48,7 +48,7 @@ def root():
 def sync(background_tasks: BackgroundTasks):
   background_tasks.add_task(run_tasks)
   return HTMLResponse('ok')
-  
+
 QUERY = gql(
     """
     query GetClearEvent($name: String!, $date: ClearDateTime!) {
@@ -58,6 +58,11 @@ QUERY = gql(
           webname: contentfulWebname
           starts_at: startDate
           id
+          price: ticketPrice
+          group_price: groupPrice
+          region {
+              currency_symbol: currencySymbol
+          }
           venue {
             name
             city
