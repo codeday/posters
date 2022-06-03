@@ -5,4 +5,5 @@ requests==2.24.0
 starlette>=0.13.6
 uvicorn>=0.11.7
 pytz==2020.1
+markupsafe==2.0.1
 gql[aiohttp]==3.0.0a6
