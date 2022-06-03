@@ -17,10 +17,10 @@
     "webname": "region",
     "timezone": "America/Los_Angeles",
     "hashtag": "region",
-    "price": 10,
-    "group_price": 7,
+    "ticketPrice": 10,
+    "groupPrice": 7,
     "region": {
-      "currency_symbol": "$"
+      "currencySymbol": "$"
     },
     "urls": {
       "home": "https://codeday.org/region",

@@ -33,13 +33,13 @@ class PosterGenerator:
       self.webname = self.current_event['webname']
       self.url = self.current_event['webname']
       self.name = self.current_event['region_name']
-      self.price = self.current_event['price']
-      if 'group_price' in self.current_event:
-        self.group_price = self.current_event['group_price']
+      self.price = self.current_event['ticketPrice']
+      if 'groupPrice' in self.current_event and self.current_event['groupPrice']:
+        self.group_price = self.current_event['groupPrice']
       else:
         self.group_price = self.price
-      if 'region' in self.current_event and 'currency_symbol' in self.current_event['region']:
-        self.currency_symbol = self.current_event['region']['currency_symbol']
+      if 'region' in self.current_event and 'currencySymbol' in self.current_event['region'] and self.current_event['region']['currencySymbol']:
+        self.currency_symbol = self.current_event['region']['currencySymbol']
       else:
         self.currency_symbol = '$'
 

@@ -58,10 +58,10 @@ QUERY = gql(
           webname: contentfulWebname
           starts_at: startDate
           id
-          price: ticketPrice
-          group_price: groupPrice
+          ticketPrice
+          groupPrice
           region {
-              currency_symbol: currencySymbol
+              currencySymbol
           }
           venue {
             name
