@@ -71,6 +71,11 @@ class PosterGenerator:
       os.makedirs(self.get_cache(file_format), exist_ok=True)
       getattr(self, 'make_poster_{}'.format(file_format))(template_name)
 
+    THREE_DAYS_IN_SECONDS = 60 * 60 * 24 * 3
+    if (datetime.datetime.now().timestamp() - os.path.getmtime(self.get_cache(file_format, template_name))) > THREE_DAYS_IN_SECONDS:
+      # prevents issues when event details change, and posters have already been generated.
+      getattr(self, 'make_poster_{}'.format(file_format))(template_name)
+
     return FileResponse(path=self.get_cache(file_format, template_name))
 
   def require_format(self, template_name, file_format):
