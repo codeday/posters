@@ -45,6 +45,7 @@ def root():
   return HTMLResponse(file_get_contents("./build/index.html"))
 
 @app.get('/sync')
+@app.post('/sync')
 def sync(background_tasks: BackgroundTasks):
   background_tasks.add_task(run_tasks)
   return HTMLResponse('ok')
